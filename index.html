@@ -1,5 +1,11 @@
 <html>
+<head>
+  <title></title>
+  <link href="./styles.css" rel="stylesheet" type="text/css">
+</head>
 <body>
+  <h1 id="gabriel">Gabriel's Webpage</h1>
+  <div>
   <canvas id="the_canvas" width="760" height="400"></canvas>
   <script>
   var canvas = document.getElementById('the_canvas');
@@ -21,56 +27,124 @@
   //presses a key
   window.addEventListener('keydown',handleKeyDown,true);
   var x = 0;
-  var draw = function() {
+  var kill = function(){clearInterval(draw)}
+  var draw = function()
+    {
+
     //clear background
-    ctx.fillStyle = "#000080";
-    ctx.fillRect(0,0, canvas.width, canvas.height);
-    if (moveRight === true) {
+            ctx.fillStyle = "#000080";
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+            if (moveRight === true)
+              {
       //move the square to the right
-      x = x + 1;
-    } else {
+              x = x + 1;
+              } else
+              {
       //move the square to the left
-      x = x - 1;
-    }
+              x = x - 1;
+              }
     //make sure it doesn't go off the screen though
-    if (x > 1000) {
-      x %= canvas.width;
-      x = -100;
+            if (x > 1000)
+              {
+              x %= canvas.width;
+              x = -100;
+              }
+
+            for (i=0;
+                 i<7;
+                i++
+                )
+                {
+                  if (i%2!=0)
+                     {
+                      ctx.fillStyle = "red";
+                      ctx.fillRect (x-900, 400-(30.77*i), 1000, 30.77);}
+                  else {
+                      ctx.fillStyle = "white";
+                      ctx.fillRect (800-x, 400-(30.77*i), 1000, 30.77);
+                       }
+    //nested ifs start
+            for (z=0;
+                 z<7;
+                 z++)
+                 {
+                   if (z%2!=0)
+                      {
+                      ctx.fillStyle = "white";
+                      ctx.fillRect (x-456, 0+30.77*z, 456, 30.77);}
+                  else {
+                      ctx.fillStyle = "red";
+                      ctx.fillRect (760-x/2, 0+30.77*z, 456, 30.77);}
+      //  }
+                 };
+      //nested ifs end
+                 };
+
+
     }
 
-    for (i=0;
-      i<7;
-      i++
-    ){
-      if (i%2!=0
-      )
+    var star = function()
+    {
+      var alpha = (2 * Math.PI) / 10;
+      var radius = 10;
+
+      var y = 0;
+
+      for(j=1;
+          j<7;
+          j++)
+
       {
-        ctx.fillStyle = "red";
-        ctx.fillRect (x-900,     400-(30.77*i), 1000, 30.77);}
-        else {
+        var starXY = [(50.67*j),(x-700)];
+        ctx.beginPath();
+
+        for(var i = 14; i != 0; i--)
+          {
+          var r = radius*(i % 2 + 1)/2;
+          var omega = alpha * i;
+          ctx.lineTo((r * Math.sin(omega)) + starXY[0], (r * Math.cos(omega)) + starXY[1]);
+          }
+          ctx.closePath();
           ctx.fillStyle = "white";
-          ctx.fillRect (800-x, 400-(30.77*i), 1000, 30.77);
+          ctx.fill();
+
+        var starXY = [(50.67*j),(x-650)];
+        ctx.beginPath();
+
+      for(var i = 14; i != 0; i--)
+        {
+          var r = radius*(i % 2 + 1)/2;
+          var omega = alpha * i;
+            ctx.lineTo((r * Math.sin(omega)) + starXY[0], (r * Math.cos(omega)) + starXY[1]);
         }
-    //nested ifs start
-    for (z=0;
-         z<7;
-         z++)
-         {
-           if (z%2!=0)
-             {
+        ctx.closePath();
         ctx.fillStyle = "white";
-        ctx.fillRect (x-456, 0+30.77*z, 456, 30.77);}
-        else {
-          ctx.fillStyle = "red";
-          ctx.fillRect (760-x/2, 0+30.77*z, 456, 30.77);}
-      //  }
-      };
-      //nested ifs end
-      };
+        ctx.fill();
+
+         var starXY = [(50.67*j),(x-600)];
+          ctx.beginPath();
+
+        for(var i = 14; i != 0; i--)
+          {
+            var r = radius*(i % 2 + 1)/2;
+            var omega = alpha * i;
+              ctx.lineTo((r * Math.sin(omega)) + starXY[0], (r * Math.cos(omega)) + starXY[1]);
+          }
+          ctx.closePath();
+          ctx.fillStyle = "white";
+          ctx.fill();
+
+        }
+
     }
+
     setInterval(draw, 2);
+    setInterval(star,5);
+
 
 
   </script>
+</div>
 </body>
+<footer>Gabriel</footer>
 </html>

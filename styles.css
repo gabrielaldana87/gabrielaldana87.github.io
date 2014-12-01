@@ -1,0 +1,21 @@
+h1    {
+        color:red;
+        font-family: 'Trebuchet MS'}
+div{
+        border: solid;
+        background-color: black
+}
+.gabriel{
+        font-family: 'Arial'}
+ul    {
+        border: 3px plum dotted;
+        border-radius: 5px}
+li    {
+        border-top: 3px seagreen solid}
+body  {
+        background-color: #27408B}
+footer{
+        text-align: center;
+        background-color:#DC143C;
+        font-family: 'Trebuchet MS';
+        font-style: italic}
